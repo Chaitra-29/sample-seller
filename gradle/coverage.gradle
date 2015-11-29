@@ -1,0 +1,15 @@
+subprojects {
+	apply plugin: 'jacoco'
+
+	jacocoTestReport {
+		group = "Reporting"
+		description = "Generate Jacoco coverage reports after running tests."
+		additionalSourceDirs = files(sourceSets.main.allJava.srcDirs)
+
+		reports {
+			xml.enabled false
+			csv.enabled false
+            html.destination "${projectDir}/build/jacocoHtml"
+		}
+	}
+}
