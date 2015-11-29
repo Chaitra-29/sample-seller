@@ -42,7 +42,7 @@ public class ManagerApplication extends Application<ManagerConfiguration> {
     builder.setConfigClass(ManagerConfiguration.class)
         .addModule(new ManagerModule())
         .addModule(new MetricsInstrumentationModule(bootstrap.getMetricRegistry()))
-        .enableAutoConfig("com.sample.ecommerce.seller");
+        .enableAutoConfig("com.sample.ecommerce.seller.test");
     GuiceBundle<ManagerConfiguration> guiceBundle = builder.build(Stage.DEVELOPMENT);
     bootstrap.addBundle(guiceBundle);
   }

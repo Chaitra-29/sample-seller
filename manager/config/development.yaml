@@ -36,13 +36,13 @@ server:
   maxThreads: 1024
   applicationConnectors:
   - type: http
-    port: 18200
+    port: 4444
     acceptorThreads: 2
     selectorThreads: 4
 
   adminConnectors:
   - type: http
-    port: 18201
+    port: 4445
 
   requestLog:
     timeZone: IST

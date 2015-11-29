@@ -78,8 +78,8 @@ task createWrapper(type: Wrapper) {
   gradleVersion = '2.4'
 }
 
-ext.mainClassName = 'fk.sp.fulfilment.apollo.manager.ManagerApplication'
-ext.configFile = './src/main/resources/development.yaml'
+ext.mainClassName = 'com.sample.ecommerce.seller.manager.ManagerApplication'
+ext.configFile = './config/development.yaml'
 
 apply from: file("gradle/common.gradle")
 
