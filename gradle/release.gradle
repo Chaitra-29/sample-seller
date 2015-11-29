@@ -19,12 +19,6 @@ subprojects {
 		archives sourceJar
 	}
 
-	uploadArchives {
-		repositories.mavenDeployer {
-			repository(url: 'http://artifactory.nm.flipkart.com:8081/artifactory/libs-releases-local/')
-			snapshotRepository(url: 'http://artifactory.nm.flipkart.com:8081/artifactory/libs-snapshots-local/')
-		}
-	}
 }
 
 createReleaseTag.dependsOn subprojects.tasks.uploadArchives

@@ -1,3 +1,2 @@
-rootProject.name = 'com.sample.ecommerce.seller'
-include 'manager'
+include ':manager'
 
