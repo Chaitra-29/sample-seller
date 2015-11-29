@@ -1,0 +1,56 @@
+clientConfiguration:
+  timeout: 60000ms
+  connectionTimeout: 20000ms
+  timeToLive: 1 hour
+  cookiesEnabled: true
+  maxConnections: 1024
+  maxConnectionsPerRoute: 1024
+  keepAlive: 30m
+  minThreads: 12
+  maxThreads: 128
+  gzipEnabled: false
+  gzipEnabledForRequests: false
+
+logging:
+  level: INFO
+  loggers:
+    fk.sp.fulfilment.apollo: INFO
+    io.dropwizard: INFO
+    org.glassfish.jersey.filter.LoggingFilter: INFO
+  appenders:
+  - type: file
+    threshold: ALL
+    timeZone: IST
+    logFormat: "%highlight(%-5level) [%date] [%X{reqId} %X{txnId}] [%cyan(%logger{0})]: %m\n%ex"
+    currentLogFilename: ./logs/app.log
+    queueSize: 5000
+    archive: true
+    archivedLogFilenamePattern: ./logs/app-%d{yyyy-MM-dd-HH}.log.gz
+    archivedFileCount: 5
+  - type: console
+    threshold: ALL
+    logFormat: "%highlight(%-5level) [%date] [%X{reqId} %X{txnId}] [%cyan(%logger{0})]: %m\n%ex"
+
+server:
+  minThreads: 64
+  maxThreads: 1024
+  applicationConnectors:
+  - type: http
+    port: 18200
+    acceptorThreads: 2
+    selectorThreads: 4
+
+  adminConnectors:
+  - type: http
+    port: 18201
+
+  requestLog:
+    timeZone: IST
+    appenders:
+    - type: file
+      currentLogFilename: ./logs/request.log
+      queueSize: 5000
+      archive: true
+      archivedLogFilenamePattern: ./logs/request-%d{yyyy-MM-dd-HH}.log.gz
+      archivedFileCount: 5
+    - type: console
