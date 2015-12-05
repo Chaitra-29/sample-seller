@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.hubspot.dropwizard.guice.GuiceBundle;
 import com.palominolabs.metrics.guice.MetricsInstrumentationModule;
+import com.sample.ecommerce.seller.main.config.SellerModule;
 import com.sample.ecommerce.seller.manager.config.ManagerConfiguration;
 import com.sample.ecommerce.seller.manager.config.ManagerModule;
 import com.sample.ecommerce.seller.manager.config.hystrix.HystrixMetricsBundle;
@@ -42,6 +43,7 @@ public class ManagerApplication extends Application<ManagerConfiguration> {
     builder.setConfigClass(ManagerConfiguration.class)
         .addModule(new ManagerModule())
         .addModule(new MetricsInstrumentationModule(bootstrap.getMetricRegistry()))
+        .addModule(new SellerModule())
         .enableAutoConfig("com.sample.ecommerce.seller.test");
     GuiceBundle<ManagerConfiguration> guiceBundle = builder.build(Stage.DEVELOPMENT);
     bootstrap.addBundle(guiceBundle);
