@@ -10,8 +10,8 @@ import lombok.Data;
  */
 @Data
 public class HashMapStorage implements ISellerInterface {
-  private static HashMap<String, SellerRequest> hashmap = null;
-  String sellerId = null;
+  private static HashMap<String, SellerRequest> hashmap;
+  String sellerId;
 
   public HashMapStorage() {
     HashMapStorage.hashmap = new HashMap<String, SellerRequest>();
