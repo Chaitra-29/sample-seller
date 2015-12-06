@@ -14,7 +14,7 @@ public class HashMapStorage implements ISellerInterface {
   String sellerId = null;
 
   public HashMapStorage() {
-    HashMapStorage.hashmap = new HashMap<String, SellerRequest>()
+    HashMapStorage.hashmap = new HashMap<String, SellerRequest>();
   }
 
   @Override
