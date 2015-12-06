@@ -3,6 +3,11 @@ package com.sample.ecommerce.seller.main;
 
 import com.google.inject.Inject;
 
+import org.elasticsearch.common.joda.time.DateTime;
+import org.elasticsearch.common.joda.time.DateTimeZone;
+
+import java.util.UUID;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -37,7 +42,13 @@ public class SellerResource {
   @Consumes(MediaType.APPLICATION_JSON)
   public String persistSeller(SellerRequest request) {
     log.info("got a request {}", request);
-    String sellerId = sellerDetails.persistenceSeller(request);
+    String sellerId = UUID.randomUUID().toString();
+    Seller seller = new Seller();
+    seller.setFirstName(request.getFirstName());
+    seller.setLastName(request.getLastName());
+    seller.setCreatedAt(DateTime.now(DateTimeZone.UTC));
+    seller.setSellerId(sellerId);
+    sellerDetails.persistenceSeller(seller);
     return sellerId;
   }
 

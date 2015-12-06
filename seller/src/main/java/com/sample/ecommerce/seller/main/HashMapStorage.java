@@ -1,11 +1,7 @@
 package com.sample.ecommerce.seller.main;
 
 
-import org.elasticsearch.common.joda.time.DateTime;
-import org.elasticsearch.common.joda.time.DateTimeZone;
-
 import java.util.HashMap;
-import java.util.UUID;
 
 import lombok.Data;
 
@@ -18,13 +14,8 @@ public class HashMapStorage implements ISellerInterface {
   ;
 
   @Override
-  public String persistenceSeller(SellerRequest request) {
-    String sellerId = UUID.randomUUID().toString();
-    Seller seller = new Seller();
-    seller.setFirstName(request.getFirstName());
-    seller.setLastName(request.getLastName());
-    seller.setCreatedAt(DateTime.now(DateTimeZone.UTC));
-    seller.setSellerId(sellerId);
+  public String persistenceSeller(Seller seller) {
+    String sellerId = seller.getSellerId();
     HashMapStorage.storage.put(sellerId, seller);
     return sellerId;
   }
