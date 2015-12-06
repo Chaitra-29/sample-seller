@@ -10,24 +10,20 @@ import lombok.Data;
  */
 @Data
 public class HashMapStorage implements ISellerInterface {
-  private static HashMap<String, SellerRequest> hashmap;
-  String sellerId;
-
-  public HashMapStorage() {
-    HashMapStorage.hashmap = new HashMap<String, SellerRequest>();
-  }
+  private static HashMap<String, SellerRequest> storage = new HashMap<String, SellerRequest>();
+  ;
 
   @Override
   public String persistenceSeller(SellerRequest request) {
-    sellerId = UUID.randomUUID().toString();
-    HashMapStorage.hashmap.put(sellerId, request);
+    String sellerId = UUID.randomUUID().toString();
+    HashMapStorage.storage.put(sellerId, request);
 
     return sellerId;
   }
 
   @Override
   public SellerResponse getSellerDetails(String sellerId) {
-    SellerRequest request = HashMapStorage.hashmap.get(sellerId);
+    SellerRequest request = HashMapStorage.storage.get(sellerId);
     SellerResponse response = new SellerResponse();
     response.setId(sellerId);
     response.setFirstName(request.getFirstName());
