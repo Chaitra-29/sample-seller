@@ -27,24 +27,18 @@ public class SellerResource {
   @Path("/{seller_id}")
   @GET
   @Produces(MediaType.APPLICATION_JSON)
-  public SellerResponse getSellerDetails(@PathParam("seller_id") String sellerId) {
-    SellerResponse response = new SellerResponse();
-    /*response.setId("1");
-    response.setFirstName("amith");
-    response.setLastName("sumit");*/
-    //HashMapStorage sellerDetails = new HashMapStorage();
-    response = sellerDetails.getSellerDetails(sellerId);
-    return response;
+  public Seller getSellerDetails(@PathParam("seller_id") String sellerId) {
+    Seller seller = sellerDetails.getSellerDetails(sellerId);
+    return seller;
 
   }
 
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
-  public void persistSeller(SellerRequest request) {
+  public String persistSeller(SellerRequest request) {
     log.info("got a request {}", request);
-    //HashMapStorage sellerDetails = new HashMapStorage();
     String sellerId = sellerDetails.persistenceSeller(request);
-    log.info("got a request {}", sellerId);
+    return sellerId;
   }
 
 
