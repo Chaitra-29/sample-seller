@@ -15,7 +15,7 @@ public class HashMapStorage implements ISellerInterface {
 
   @Override
   public String persistenceSeller(Seller seller) {
-    String sellerId = seller.getSellerId();
+    String sellerId = seller.getId();
     HashMapStorage.storage.put(sellerId, seller);
     return sellerId;
   }

@@ -3,6 +3,8 @@ package com.sample.ecommerce.seller.main;
 
 import org.elasticsearch.common.joda.time.DateTime;
 
+import java.util.UUID;
+
 import lombok.Data;
 
 /**
@@ -10,9 +12,9 @@ import lombok.Data;
  */
 @Data
 public class Seller {
-  String sellerId;
-  String FirstName;
-  String LastName;
+  String id = UUID.randomUUID().toString();
+  String firstName;
+  String lastName;
   DateTime createdAt;
 
 }
