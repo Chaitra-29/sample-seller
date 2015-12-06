@@ -19,6 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @Path("/seller")
 @Slf4j
 public class SellerResource {
+  HashMapStorage sellerDetails = new HashMapStorage();
   @Inject
   public SellerResource() {
   }
@@ -27,11 +28,13 @@ public class SellerResource {
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   public SellerResponse getSellerDetails(@PathParam("seller_id") String sellerId) {
-    SellerResponse sellerres = new SellerResponse();
-    sellerres.setId("1");
-    sellerres.setFirstName("Foo");
-    sellerres.setLastName("Far");
-    return sellerres;
+    SellerResponse response = new SellerResponse();
+    /*response.setId("1");
+    response.setFirstName("amith");
+    response.setLastName("sumit");*/
+    //HashMapStorage sellerDetails = new HashMapStorage();
+    response = sellerDetails.getSellerDetails(sellerId);
+    return response;
 
   }
 
@@ -39,7 +42,9 @@ public class SellerResource {
   @Consumes(MediaType.APPLICATION_JSON)
   public void persistSeller(SellerRequest request) {
     log.info("got a request {}", request);
-
+    //HashMapStorage sellerDetails = new HashMapStorage();
+    String sellerId = sellerDetails.persistenceSeller(request);
+    log.info("got a request {}", sellerId);
   }
 
 

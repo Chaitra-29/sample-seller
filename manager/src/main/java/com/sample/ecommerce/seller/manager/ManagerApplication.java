@@ -23,9 +23,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import static java.util.TimeZone.getTimeZone;
 
-/**
- * Created by ali.nalawala on 11/29/15.
- */
 @Slf4j
 public class ManagerApplication extends Application<ManagerConfiguration> {
 
