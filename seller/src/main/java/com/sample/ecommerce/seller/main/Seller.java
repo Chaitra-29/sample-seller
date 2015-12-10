@@ -1,7 +1,7 @@
 package com.sample.ecommerce.seller.main;
 
 
-import org.elasticsearch.common.joda.time.DateTime;
+import org.joda.time.DateTime;
 
 import java.util.UUID;
 

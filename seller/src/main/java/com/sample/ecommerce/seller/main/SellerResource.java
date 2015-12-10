@@ -3,8 +3,7 @@ package com.sample.ecommerce.seller.main;
 
 import com.google.inject.Inject;
 
-import org.elasticsearch.common.joda.time.DateTime;
-import org.elasticsearch.common.joda.time.DateTimeZone;
+import org.joda.time.DateTime;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -43,7 +42,7 @@ public class SellerResource {
     Seller seller = new Seller();
     seller.setFirstName(request.getFirstName());
     seller.setLastName(request.getLastName());
-    seller.setCreatedAt(DateTime.now(DateTimeZone.UTC));
+    seller.setCreatedAt(DateTime.now());
     String sellerId = sellerDetails.persistenceSeller(seller);
     return sellerId;
   }
