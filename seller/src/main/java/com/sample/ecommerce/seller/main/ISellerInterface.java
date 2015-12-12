@@ -5,7 +5,7 @@ package com.sample.ecommerce.seller.main;
  */
 
 public interface ISellerInterface {
-  public String persistenceSeller(SellerRequest request);
+  public String persistenceSeller(Seller seller);
 
-  public SellerResponse getSellerDetails(String sellerId);
+  public Seller getSellerDetails(String sellerId);
 }

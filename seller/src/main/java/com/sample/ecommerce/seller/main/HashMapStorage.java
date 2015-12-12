@@ -1,7 +1,7 @@
 package com.sample.ecommerce.seller.main;
 
+
 import java.util.HashMap;
-import java.util.UUID;
 
 import lombok.Data;
 
@@ -10,24 +10,19 @@ import lombok.Data;
  */
 @Data
 public class HashMapStorage implements ISellerInterface {
-  private static HashMap<String, SellerRequest> storage = new HashMap<String, SellerRequest>();
+  private static HashMap<String, Seller> storage = new HashMap<String, Seller>();
   ;
 
   @Override
-  public String persistenceSeller(SellerRequest request) {
-    String sellerId = UUID.randomUUID().toString();
-    HashMapStorage.storage.put(sellerId, request);
-
+  public String persistenceSeller(Seller seller) {
+    String sellerId = seller.getId();
+    HashMapStorage.storage.put(sellerId, seller);
     return sellerId;
   }
 
   @Override
-  public SellerResponse getSellerDetails(String sellerId) {
-    SellerRequest request = HashMapStorage.storage.get(sellerId);
-    SellerResponse response = new SellerResponse();
-    response.setId(sellerId);
-    response.setFirstName(request.getFirstName());
-    response.setLastName(request.getLastName());
-    return response;
+  public Seller getSellerDetails(String sellerId) {
+    Seller seller = HashMapStorage.storage.get(sellerId);
+    return seller;
   }
 }
