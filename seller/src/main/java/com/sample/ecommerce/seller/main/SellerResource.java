@@ -21,11 +21,11 @@ import lombok.extern.slf4j.Slf4j;
 @Path("/seller")
 @Slf4j
 public class SellerResource {
-  SellerRepository sellerRepository;
+  private final SellerRepository sellerRepository;
 
   @Inject
-  public SellerResource() {
-    sellerRepository = new HashMapStorage();
+  public SellerResource(SellerRepository sellerRepository) {
+    this.sellerRepository = sellerRepository;
   }
 
   @Path("/{seller_id}")
