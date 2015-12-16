@@ -2,6 +2,7 @@ package com.sample.ecommerce.seller.main;
 
 
 import java.util.HashMap;
+import java.util.Map;
 
 import lombok.Data;
 
@@ -9,9 +10,8 @@ import lombok.Data;
  * Created by I307690 on 05-Dec-15.
  */
 @Data
-public class HashMapStorage implements ISellerInterface {
-  private static HashMap<String, Seller> storage = new HashMap<String, Seller>();
-  ;
+public class HashMapStorage implements SellerRepository {
+  private static Map<String, Seller> storage = new HashMap<String, Seller>();
 
   @Override
   public String persistenceSeller(Seller seller) {

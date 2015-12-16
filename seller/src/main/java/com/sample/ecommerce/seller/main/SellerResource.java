@@ -21,16 +21,18 @@ import lombok.extern.slf4j.Slf4j;
 @Path("/seller")
 @Slf4j
 public class SellerResource {
-  HashMapStorage sellerDetails = new HashMapStorage();
+  private final SellerRepository sellerRepository;
+
   @Inject
-  public SellerResource() {
+  public SellerResource(SellerRepository sellerRepository) {
+    this.sellerRepository = sellerRepository;
   }
 
   @Path("/{seller_id}")
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   public Seller getSellerDetails(@PathParam("seller_id") String sellerId) {
-    Seller seller = sellerDetails.getSellerDetails(sellerId);
+    Seller seller = sellerRepository.getSellerDetails(sellerId);
     return seller;
 
   }
@@ -43,7 +45,7 @@ public class SellerResource {
     seller.setFirstName(request.getFirstName());
     seller.setLastName(request.getLastName());
     seller.setCreatedAt(DateTime.now());
-    String sellerId = sellerDetails.persistenceSeller(seller);
+    String sellerId = sellerRepository.persistenceSeller(seller);
     return sellerId;
   }
 

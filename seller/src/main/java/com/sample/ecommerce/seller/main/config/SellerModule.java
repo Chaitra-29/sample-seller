@@ -2,6 +2,8 @@ package com.sample.ecommerce.seller.main.config;
 
 import com.google.inject.AbstractModule;
 
+import com.sample.ecommerce.seller.main.HashMapStorage;
+import com.sample.ecommerce.seller.main.SellerRepository;
 import com.sample.ecommerce.seller.main.SellerResource;
 
 /**
@@ -12,5 +14,6 @@ public class SellerModule extends AbstractModule {
   @Override
   protected void configure() {
     bind(SellerResource.class);
+    bind(SellerRepository.class).to(HashMapStorage.class);
   }
 }
